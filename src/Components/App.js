@@ -36,7 +36,7 @@ function App() {
       player2: "Player2",
       player1Color: 255,
       player2Color: 255,
-      target: 100,
+      target: 50,
       holdDisabled: true,
       holdBtnOpacity: 0.3,
       rollDisabled: false,
