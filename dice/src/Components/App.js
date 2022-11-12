@@ -156,7 +156,7 @@ function App() {
                rollBtnOpacity: 0.3,
             };
          });
-      } else if (num == state.target) {
+      } else if (num === state.target) {
          setState((pervValue) => {
             return {
                ...pervValue,
@@ -187,7 +187,7 @@ function App() {
                rollBtnOpacity: 0.3,
             };
          });
-      } else if (num == state.target) {
+      } else if (num === state.target) {
          setState((pervValue) => {
             return {
                ...pervValue,
