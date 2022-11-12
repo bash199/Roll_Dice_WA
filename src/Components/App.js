@@ -77,7 +77,7 @@ function App() {
       } else {
          setPlayer2State(randomNum1, randomNum2);
       }
-      if (randomNum1 === 5 && randomNum2 === 5) {
+      if (randomNum1 + randomNum2 === 10) {
          addScoreAndSwitchPlayer(true);
       }
    };
