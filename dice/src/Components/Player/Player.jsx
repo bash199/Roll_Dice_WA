@@ -8,10 +8,9 @@ const Div = styled.div`
    justify-content: space-between;
    align-items: center;
    font-size: 1.5rem;
-   @media (max-width: 400px) {
+   @media (max-width: 450px) {
       width: 100%;
       justify-content: space-around;
-      
    }
 `;
 const CurrentDiv = styled.div`
@@ -24,9 +23,10 @@ const CurrentDiv = styled.div`
    align-items: center;
    justify-content: center;
    border-radius: 10px;
-   @media (max-width: 400px) {
+   @media (max-width: 450px) {
       width: 100px;
       height: 70px;
+      font-size: 0.8rem;
    }
 `;
 const Div2 = styled.div`
@@ -34,9 +34,15 @@ const Div2 = styled.div`
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   @media (max-width: 400px) {
+   @media (max-width: 450px) {
       width: 100px;
       height: 70px;
+      & > h2 {
+         font-size: 1.5rem;
+      }
+      & > p {
+         font-size: 2.5rem;
+      }
    }
 `;
 const P = styled.p`
@@ -53,10 +59,14 @@ const H6 = styled.h6`
    color: white;
    font-weight: 400;
 `;
-
-const Player = ({player, score, currentScore, opacity,color}) => {
+const Player = ({player, score, currentScore, opacity, color}) => {
    return (
-      <Div style={{background: `rgb(${color},${color},${color},${opacity})` ,transition: 'all 0.75s'}}>
+      <Div
+         style={{
+            background: `rgb(${color},${color},${color},${opacity})`,
+            transition: "all 0.75s",
+         }}
+      >
          <Div2>
             <h2>{player}</h2>
             <P2>{score}</P2>

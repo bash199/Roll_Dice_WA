@@ -14,7 +14,6 @@ const Div = styled.div`
    }
 `;
 
-
 const Container = ({diceImgArr,getRandomNumber,state,holdFunc,newGame}) => {
    return (
       <Div>

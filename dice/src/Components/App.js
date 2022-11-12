@@ -18,11 +18,10 @@ const Div = styled.div`
    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
-
 function App() {
-  let diceImagesArr = [dice1, dice2, dice3, dice4, dice5, dice6];
+   let diceImagesArr = [dice1, dice2, dice3, dice4, dice5, dice6];
    const [state, setState] = useState({
-      showLandPage:false,
+      showLandPage: false,
       player1Current: 0,
       player2Current: 0,
       player1Score: 0,
@@ -47,6 +46,7 @@ function App() {
       setState((prevVlaue) => {
          return {
             ...prevVlaue,
+            showLandPage: false,
             player1Current: 0,
             player2Current: 0,
             player1Score: 0,
@@ -61,7 +61,7 @@ function App() {
             player2: "Player2",
             player1Color: 255,
             player2Color: 255,
-            target: 100,
+            target: 50,
             holdDisabled: true,
             holdBtnOpacity: 0.3,
             rollDisabled: false,
@@ -69,7 +69,7 @@ function App() {
          };
       });
    };
-   const get = () => {
+   const getRollDice = () => {
       let randomNum1 = getRandomNumber();
       let randomNum2 = getRandomNumber();
       if (state.isHoldTrue) {
@@ -78,8 +78,8 @@ function App() {
          setPlayer2State(randomNum1, randomNum2);
       }
       if (randomNum1 === 5 && randomNum2 === 5) {
-        addScoreAndSwitchPlayer(true);
-     }
+         addScoreAndSwitchPlayer(true);
+      }
    };
    const setPlayer1State = (num1, num2) => {
       setState((pervValue) => {
@@ -108,7 +108,9 @@ function App() {
    const addScoreAndSwitchPlayer = (n) => {
       if (state.isHoldTrue) {
          setState((pervValue) => {
-            const sum = n?0:pervValue.player1Score + pervValue.player1Current;
+            const sum = n
+               ? 0
+               : pervValue.player1Score + pervValue.player1Current;
             checkScoreOfPlayer1(sum);
             return {
                ...pervValue,
@@ -123,7 +125,9 @@ function App() {
          });
       } else {
          setState((pervValue) => {
-            const sum = n?0:pervValue.player2Score + pervValue.player2Current;
+            const sum = n
+               ? 0
+               : pervValue.player2Score + pervValue.player2Current;
             checkScoreOfPlayer2(sum);
             return {
                ...pervValue,
@@ -204,14 +208,16 @@ function App() {
    };
    return (
       <Div>
-       { state.showLandPage && <LandPage />}
-        {!state.showLandPage && <Container
-            getRandomNumber={get}
-            diceImgArr={diceImagesArr}
-            state={state}
-            holdFunc={addScoreAndSwitchPlayer}
-            newGame={newGame}
-         />}
+         {!state.showLandPage && <LandPage setState={setState} />}
+         {state.showLandPage && (
+            <Container
+               getRandomNumber={getRollDice}
+               diceImgArr={diceImagesArr}
+               state={state}
+               holdFunc={addScoreAndSwitchPlayer}
+               newGame={newGame}
+            />
+         )}
       </Div>
    );
 }
